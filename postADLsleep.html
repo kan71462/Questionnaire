@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <script src="setting.js"></script><!--引用放在setting.js裡面的東西(ex:function等)-->
+    <script src="Cookie.js"></script>
+    <script src="HTTP2019.js"></script>
+    <script>
+
+
+        var myObj = {
+            "resourceType": "QuestionnaireResponse",
+            "status": "completed",
+            "subject": {
+                "reference": "Patient/1478659"
+            },
+            "authored": "2020-02-17T12:20:17.1151Z",
+            "item": [{
+                "linkId": "1",
+                "text": "入睡時間",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }, {
+                "linkId": "2",
+                "text": "睡眠中斷",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }, {
+                "linkId": "3",
+                "text": "過早清醒",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }, {
+                "linkId": "4",
+                "text": "總睡眠時間",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }, {
+                "linkId": "5",
+                "text": "睡眠絣直",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }, {
+                "linkId": "6",
+                "text": "白天的美好感",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }, {
+                "linkId": "7",
+                "text": "白天身心功能",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }, {
+                "linkId": "8",
+                "text": "白天嗜睡程度",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }]
+        };
+
+        // myObj.item[0].answer[0].valueString
+        function postData() {
+
+            //myObj.subject.reference = "Patient/" + document.getElementById("FHIRPtionID").value;//將myObj的reference字串改成由使用者輸入的id，方便日後查詢用
+            //第一種寫法 getElementById
+               if(document.getElementById("rd_sleep_1_1").checked == true)
+                  { myObj.item[0].answer[0].valueInteger =0;     }
+               if(document.getElementById("rd_sleep_1_2").checked == true)
+                  { myObj.item[0].answer[0].valueInteger =1 ;      }  
+               if(document.getElementById("rd_sleep_1_3").checked == true)
+                  { myObj.item[0].answer[0].valueInteger =2 ;            }
+                 if(document.getElementById("rd_sleep_1_4").checked == true)
+                  { myObj.item[0].answer[0].valueInteger =3;     }
+
+                  if(document.getElementById("rd_sleep_2_1").checked == true)
+                  { myObj.item[1].answer[0].valueInteger =0;     }
+               if(document.getElementById("rd_sleep_2_2").checked == true)
+                  { myObj.item[1].answer[0].valueInteger =1 ;      }  
+               if(document.getElementById("rd_sleep_2_3").checked == true)
+                  { myObj.item[1].answer[0].valueInteger =2 ;            }
+                 if(document.getElementById("rd_sleep_2_4").checked == true)
+                  { myObj.item[1].answer[0].valueInteger =3;     }
+
+                  if(document.getElementById("rd_sleep_3_1").checked == true)
+                  { myObj.item[2].answer[0].valueInteger =0;     }
+               if(document.getElementById("rd_sleep_3_2").checked == true)
+                  { myObj.item[2].answer[0].valueInteger =1 ;      }  
+               if(document.getElementById("rd_sleep_3_3").checked == true)
+                  { myObj.item[2].answer[0].valueInteger =2 ;            }
+                 if(document.getElementById("rd_sleep_3_4").checked == true)
+                  { myObj.item[2].answer[0].valueInteger =3;     }
+
+                  if(document.getElementById("rd_sleep_4_1").checked == true)
+                  { myObj.item[3].answer[0].valueInteger =0;     }
+               if(document.getElementById("rd_sleep_4_2").checked == true)
+                  { myObj.item[3].answer[0].valueInteger =1 ;      }  
+               if(document.getElementById("rd_sleep_4_3").checked == true)
+                  { myObj.item[3].answer[0].valueInteger =2 ;            }
+                 if(document.getElementById("rd_sleep_4_4").checked == true)
+                  { myObj.item[3].answer[0].valueInteger =3;     }
+
+                  if(document.getElementById("rd_sleep_5_1").checked == true)
+                  { myObj.item[4].answer[0].valueInteger =0;     }
+               if(document.getElementById("rd_sleep_5_2").checked == true)
+                  { myObj.item[4].answer[0].valueInteger =1 ;      }  
+               if(document.getElementById("rd_sleep_5_3").checked == true)
+                  { myObj.item[4].answer[0].valueInteger =2 ;            }
+                 if(document.getElementById("rd_sleep_5_4").checked == true)
+                  { myObj.item[4].answer[0].valueInteger =3;     }
+
+                  if(document.getElementById("rd_sleep_6_1").checked == true)
+                  { myObj.item[5].answer[0].valueInteger =0;     }
+               if(document.getElementById("rd_sleep_6_2").checked == true)
+                  { myObj.item[5].answer[0].valueInteger =1 ;      }  
+               if(document.getElementById("rd_sleep_6_3").checked == true)
+                  { myObj.item[5].answer[0].valueInteger =2 ;            }
+                 if(document.getElementById("rd_sleep_6_4").checked == true)
+                  { myObj.item[5].answer[0].valueInteger =3;     }
+
+                  if(document.getElementById("rd_sleep_7_1").checked == true)
+                  { myObj.item[6].answer[0].valueInteger =0;     }
+               if(document.getElementById("rd_sleep_7_2").checked == true)
+                  { myObj.item[6].answer[0].valueInteger =1 ;      }  
+               if(document.getElementById("rd_sleep_7_3").checked == true)
+                  { myObj.item[6].answer[0].valueInteger =2 ;            }
+                 if(document.getElementById("rd_sleep_7_4").checked == true)
+                  { myObj.item[6].answer[0].valueInteger =3;     }
+
+                  if(document.getElementById("rd_sleep_8_1").checked == true)
+                  { myObj.item[7].answer[0].valueInteger =0;     }
+               if(document.getElementById("rd_sleep_8_2").checked == true)
+                  { myObj.item[7].answer[0].valueInteger =1 ;      }  
+               if(document.getElementById("rd_sleep_8_3").checked == true)
+                  { myObj.item[7].answer[0].valueInteger =2 ;            }
+                 if(document.getElementById("rd_sleep_8_4").checked == true)
+                  { myObj.item[7].answer[0].valueInteger =3;     }
+  
+              var jsonStr = JSON.stringify(myObj);
+            //   alert(jsonStr);
+
+            //第二種寫法 getElementByName
+            // var rd_eating = document.getElementsByName("rd_moving");    
+            // alert(rd_eating.length);
+            // for (var k = 0; k < rd_eating.length; k++) {
+            // if (rd_eating[k].checked){
+            //     myObj.item[0].answer[0].valueInteger =10;
+            //     alert(rd_eating[k].value);
+            // }
+            // }
+
+            //第三種寫法 getElementsByTagName
+            /*var count = 0; //計數器
+            var Str = "";//初始化Str，讓它裡面的內容變成NULL
+            var Total_Obj = document.getElementsByTagName("input");  //從標記名稱取得數值，此處取的標記是input，取得不只有一個數值，變成一個陣列 > 以此處為例，陣列長度 = 要選擇的項目*4(也就是input的出現次數)
+            //alert(Total_Obj.length);
+            for (var k = 0; k < Total_Obj.length; k++) {//如果k<陣列的長度則k++
+                if (Total_Obj[k].type == "radio") {//如果陣列裡面第k個是radio型態
+                    if (Total_Obj[k].checked) {//如果陣列第k個的checked的狀態是checked的話(true != 0)，if為真
+                        Str = Total_Obj[k].value;//把陣列第k個的值放進Str中
+                        if (Str != "") {
+                            //answer[count] = Str;//text;
+                            myObj.item[count].answer[0].valueInteger = Str;//把Str中的數放到myObj中第count項item中的answer中的第0項的valueInteger
+                            count++;//count+1，因為k的長度與需計算的內容長度不一樣，計算放到myObj中第幾個item
+                             //alert(Str);
+                        }
+                    }
+                }
+            }*/
+            var jsonStr = JSON.stringify(myObj);//將myObj中的內容轉換成JSON格式
+            alert(jsonStr);
+
+            var apiURL;
+            apiURL = FHIRrootURL + "/QuestionnaireResponse";
+            HTTPPostData(apiURL, jsonStr);//將網址及轉成JSON格式的myObj傳入副函式中(在HTTR2019.js中)
+
+        }
+        //http://hapi.fhir.org/baseR4/QuestionnaireResponse/1604735
+        //http://hapi.fhir.org/baseR4/QuestionnaireResponse/1609353
+        function getData() {
+            //取得填答
+            HTTPGetData(FHIRrootURL + "/QuestionnaireResponse/1609353");//將網址轉成字串型態傳到副函式中(放在HTTP2019.js中)，從網址中取得JSON資料
+            var data = JSON.parse(ret);//將ret(從HTTP2019.js中引用的全域變數)從JSON型態變成Javascript能用的變數型態
+            var tb1 = document.getElementById("tb1");//將table中的內容放進tb1裡面
+            alert(data.item[0].answer[0].valueInteger);
+
+            // 需每個id都必須要寫進來，太長，不想採用
+             if(data.item[1].answer[0].valueInteger==0)  //如果
+             { 
+                document.getElementById("rd_sleep_1_1").checked=true;   
+             }
+             if(data.item[1].answer[0].valueInteger==1)
+             { 
+                document.getElementById("rd_sleep_1_2").checked=true;  
+             }
+             if(data.item[1].answer[0].valueInteger==2)
+             { 
+                document.getElementById("rd_sleep_1_3").checked=true;
+             }
+             if(data.item[1].answer[0].valueInteger==3)
+             { 
+                document.getElementById("rd_sleep_1_4").checked=true;
+             }
+
+             if(data.item[1].answer[0].valueInteger==0)  //如果
+             { 
+                document.getElementById("rd_sleep_2_1").checked=true;   
+             }
+             if(data.item[1].answer[0].valueInteger==1)
+             { 
+                document.getElementById("rd_sleep_2_2").checked=true;  
+             }
+             if(data.item[1].answer[0].valueInteger==2)
+             { 
+                document.getElementById("rd_sleep_2_3").checked=true;
+             }
+             if(data.item[1].answer[0].valueInteger==3)
+             { 
+                document.getElementById("rd_sleep_2_4").checked=true;
+             }
+
+             if(data.item[2].answer[0].valueInteger==0)  //如果
+             { 
+                document.getElementById("rd_sleep_3_1").checked=true;   
+             }
+             if(data.item[2].answer[0].valueInteger==1)
+             { 
+                document.getElementById("rd_sleep_3_2").checked=true;  
+             }
+             if(data.item[2].answer[0].valueInteger==2)
+             { 
+                document.getElementById("rd_sleep_3_3").checked=true;
+             }
+             if(data.item[2].answer[0].valueInteger==3)
+             { 
+                document.getElementById("rd_sleep_3_4").checked=true;
+             }
+
+             if(data.item[3].answer[0].valueInteger==0)  //如果
+             { 
+                document.getElementById("rd_sleep_4_1").checked=true;   
+             }
+             if(data.item[3].answer[0].valueInteger==1)
+             { 
+                document.getElementById("rd_sleep_4_2").checked=true;  
+             }
+             if(data.item[3].answer[0].valueInteger==2)
+             { 
+                document.getElementById("rd_sleep_4_3").checked=true;
+             }
+             if(data.item[3].answer[0].valueInteger==3)
+             { 
+                document.getElementById("rd_sleep_4_4").checked=true;
+             }
+
+             if(data.item[4].answer[0].valueInteger==0)  //如果
+             { 
+                document.getElementById("rd_sleep_5_1").checked=true;   
+             }
+             if(data.item[4].answer[0].valueInteger==1)
+             { 
+                document.getElementById("rd_sleep_5_2").checked=true;  
+             }
+             if(data.item[4].answer[0].valueInteger==2)
+             { 
+                document.getElementById("rd_sleep_5_3").checked=true;
+             }
+             if(data.item[4].answer[0].valueInteger==3)
+             { 
+                document.getElementById("rd_sleep_5_4").checked=true;
+             }
+
+             if(data.item[5].answer[0].valueInteger==0)  //如果
+             { 
+                document.getElementById("rd_sleep_6_1").checked=true;   
+             }
+             if(data.item[5].answer[0].valueInteger==1)
+             { 
+                document.getElementById("rd_sleep_6_2").checked=true;  
+             }
+             if(data.item[5].answer[0].valueInteger==2)
+             { 
+                document.getElementById("rd_sleep_6_3").checked=true;
+             }
+             if(data.item[5].answer[0].valueInteger==3)
+             { 
+                document.getElementById("rd_sleep_6_4").checked=true;
+             }
+
+             if(data.item[6].answer[0].valueInteger==0)  //如果
+             { 
+                document.getElementById("rd_sleep_7_1").checked=true;   
+             }
+             if(data.item[6].answer[0].valueInteger==1)
+             { 
+                document.getElementById("rd_sleep_7_2").checked=true;  
+             }
+             if(data.item[6].answer[0].valueInteger==2)
+             { 
+                document.getElementById("rd_sleep_7_3").checked=true;
+             }
+             if(data.item[6].answer[0].valueInteger==3)
+             { 
+                document.getElementById("rd_sleep_7_4").checked=true;
+             }
+
+             if(data.item[7].answer[0].valueInteger==0)  //如果
+             { 
+                document.getElementById("rd_sleep_8_1").checked=true;   
+             }
+             if(data.item[7].answer[0].valueInteger==1)
+             { 
+                document.getElementById("rd_sleep_8_2").checked=true;  
+             }
+             if(data.item[7].answer[0].valueInteger==2)
+             { 
+                document.getElementById("rd_sleep_8_3").checked=true;
+             }
+             if(data.item[7].answer[0].valueInteger==3)
+             { 
+                document.getElementById("rd_sleep_8_4").checked=true;
+             }
+            //將答案依序讀取出來
+             /*for (i = 0; i < data.item.length; i++) {
+                 var obj = data.item[i];//讓obj等於data中第i個item
+                 var ans = obj.answer[0].valueInteger;
+                 //alert(ans);       
+                 //把資料寫入radiobutton 
+                 var item = tb1.rows[i].getElementsByTagName("input");//讓item等於td1的第i列
+                 //alert(item.length);
+                     for (k = 0; k < item.length; k++) {
+                         if (item[k].value == ans) {//如果item中第k項數值等於ans的值，則讓那一個radio變成check的狀態(true)
+                             item[k].checked = true;
+                         }                       
+                     }
+                    
+             }*/
+            //alert(data);
+        }
+
+        function clearData() {
+            var Total_Obj = document.getElementsByTagName("input");
+            // var question=document.getElementsByName("qtext");
+            for (var k = 0; k < Total_Obj.length; k++) {
+                if (Total_Obj[k].type == "radio") {
+                    if (Total_Obj[k].checked) {
+                        Total_Obj[k].checked = false;//將所有radio改成未選擇的狀態
+                    }
+                }
+            }
+        }
+
+    </script>
+
+</head>
+
+<body style="height: 780px">
+
+    FHIR patient id:
+    <input type="text" value="unknown" id="FHIRPtionID" /> <br />
+
+    <p>五、睡眠困擾程度</p>
+
+    <input id="btnClear" onclick="clearData()" type="button" value="clearData" />
+    <input id="btnGetdata" onclick="getData()" type="button" value="getData" />
+    <input id="Button1" onclick="postData()" type="button" value="postData" /><br /> <br />
+
+    <table width="100%" id="tb1" style="table-layout: fixed" border="1">
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">1.入睡時間</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_1_1" id="rd_sleep_1_1" value="0" />
+                           	0沒問題
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_1_2" id="rd_sleep_1_2" value="1" />1 略為延遲
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_1_3" id="rd_sleep_1_3" value="2" />2 中度延遲
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_1_4" id="rd_sleep_1_4" value="3" />3 嚴重延遲
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">2.睡眠中斷</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_2_1" id="rd_sleep_2_1" value="0" />
+                           	0沒問題
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_2_2" id="rd_sleep_2_2" value="1" />1 問題不大
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_2_3" id="rd_sleep_2_3" value="2" />2 問題明顯
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_2_4" id="rd_sleep_2_4" value="3" />3 嚴種中斷
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">3.過早清醒</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_3_1" id="rd_sleep_3_1" value="0" />
+                           	0沒問題
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_3_2" id="rd_sleep_3_2" value="1" />1 有點早醒
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_3_3" id="rd_sleep_3_3" value="2" />2 明顯早醒
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_3_4" id="rd_sleep_3_4" value="3" />3 嚴重早醒
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">4.總睡眠時間</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_4_1" id="rd_sleep_4_1" value="0" />
+                           	0 已足夠
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_4_2" id="rd_sleep_4_2" value="1" />1 有點不足
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_4_3" id="rd_sleep_4_3" value="2" />2 中度不足
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_4_4" id="rd_sleep_4_4" value="3" />3 嚴重不足
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">5.整體睡眠品質</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_5_1" id="rd_sleep_5_1" value="0" />
+                           	0 很滿意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_5_2" id="rd_sleep_5_2" value="1" />1 有點不佳
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_5_3" id="rd_sleep_5_3" value="2" />2 明顯欠佳
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_5_4" id="rd_sleep_5_4" value="3" />3 極不滿意
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">6.白天的美好感(心情、情緒)</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_6_1" id="rd_sleep_6_1" value="0" />
+                           	0還不錯
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_6_2" id="rd_sleep_6_2" value="1" />1 有點下降
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_6_3" id="rd_sleep_6_3" value="2" />2 中度影響
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_6_4" id="rd_sleep_6_4" value="3" />3 嚴重下降
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">7.白天身心功能(體力、注意力、記憶力)</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_7_1" id="rd_sleep_7_1" value="0" />
+                           	0還正常
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_7_2" id="rd_sleep_7_2" value="1" />1 有點下降
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_7_3" id="rd_sleep_7_3" value="2" />2 中度影響
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_7_4" id="rd_sleep_7_4" value="3" />3 嚴重下降
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">8.白天嗜睡程度</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_8_1" id="rd_sleep_8_1" value="0" />
+                           	0沒有嗜睡
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_8_2" id="rd_sleep_8_2" value="1" />1 輕度嗜睡
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_8_3" id="rd_sleep_8_3" value="2" />2 中度嗜睡
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sleep_8_4" id="rd_sleep_8_4" value="3" />3 嚴重嗜睡
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+<script>
+    document.getElementById("FHIRPtionID").value = getCookie("patientID"); //取得pationID傳入副函式(在Cookie.js中)，讓FHIRPtionID的值等於回傳值
+    document.getElementById("name").value = getCookie("patientName");//取得name傳入副函式(在Cookie.js中)，讓name的值等於回傳值
+
+</script>
+
+</html>

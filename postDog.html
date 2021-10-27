@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <script src="setting.js"></script>
+    <script src="Cookie.js"></script>
+    <script src="HTTP2019.js"></script>
+    <script>
+
+
+        var myObj = {
+            "resourceType": "QuestionnaireResponse",
+            "status": "completed",
+            "subject": {
+                "reference": "Patient/1478659"
+            },
+            "authored": "2020-02-17T12:20:17.1151Z",
+            "item": [{
+                "linkId": "1",
+                "text": "1",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "2",
+                "text": "2",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "3",
+                "text": "3",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "4",
+                "text": "4",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "5",
+                "text": "5",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "6",
+                "text": "6",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "7",
+                "text": "7",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "8",
+                "text": "8",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "9",
+                "text": "9",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "10",
+                "text": "10",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "11",
+                "text": "11",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "12",
+                "text": "12",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+        ]
+        };
+
+        // alert(myObj.item[0].answer[0].valueInteger);
+
+        function postData() {
+
+            myObj.subject.reference = "Patient/" + document.getElementById("FHIRPtionID").value;
+
+            if (document.getElementById("rd_mercy_01_01").checked == true) { myObj.item[0].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_01_02").checked == true) { myObj.item[0].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_01_03").checked == true) { myObj.item[0].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_01_04").checked == true) { myObj.item[0].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_01_05").checked == true) { myObj.item[0].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_02_01").checked == true) { myObj.item[1].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_02_02").checked == true) { myObj.item[1].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_02_03").checked == true) { myObj.item[1].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_02_04").checked == true) { myObj.item[1].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_02_05").checked == true) { myObj.item[1].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_03_01").checked == true) { myObj.item[2].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_03_02").checked == true) { myObj.item[2].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_03_03").checked == true) { myObj.item[2].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_03_04").checked == true) { myObj.item[2].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_03_05").checked == true) { myObj.item[2].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_04_01").checked == true) { myObj.item[3].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_04_02").checked == true) { myObj.item[3].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_04_03").checked == true) { myObj.item[3].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_04_04").checked == true) { myObj.item[3].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_04_05").checked == true) { myObj.item[3].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_05_01").checked == true) { myObj.item[4].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_05_02").checked == true) { myObj.item[4].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_05_03").checked == true) { myObj.item[4].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_05_04").checked == true) { myObj.item[4].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_05_05").checked == true) { myObj.item[4].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_06_01").checked == true) { myObj.item[5].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_06_02").checked == true) { myObj.item[5].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_06_03").checked == true) { myObj.item[5].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_06_04").checked == true) { myObj.item[5].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_06_05").checked == true) { myObj.item[5].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_07_01").checked == true) { myObj.item[6].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_07_02").checked == true) { myObj.item[6].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_07_03").checked == true) { myObj.item[6].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_07_04").checked == true) { myObj.item[6].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_07_05").checked == true) { myObj.item[6].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_08_01").checked == true) { myObj.item[7].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_08_02").checked == true) { myObj.item[7].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_08_03").checked == true) { myObj.item[7].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_08_04").checked == true) { myObj.item[7].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_08_05").checked == true) { myObj.item[7].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_09_01").checked == true) { myObj.item[8].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_09_02").checked == true) { myObj.item[8].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_09_03").checked == true) { myObj.item[8].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_09_04").checked == true) { myObj.item[8].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_09_05").checked == true) { myObj.item[8].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_10_01").checked == true) { myObj.item[9].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_10_02").checked == true) { myObj.item[9].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_10_03").checked == true) { myObj.item[9].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_10_04").checked == true) { myObj.item[9].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_10_05").checked == true) { myObj.item[9].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_11_01").checked == true) { myObj.item[10].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_11_02").checked == true) { myObj.item[10].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_11_03").checked == true) { myObj.item[10].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_11_04").checked == true) { myObj.item[10].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_11_05").checked == true) { myObj.item[10].answer[0].valueInteger = 5; }
+
+            if (document.getElementById("rd_mercy_12_01").checked == true) { myObj.item[11].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_mercy_12_02").checked == true) { myObj.item[11].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_mercy_12_03").checked == true) { myObj.item[11].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_mercy_12_04").checked == true) { myObj.item[11].answer[0].valueInteger = 4; }
+            if (document.getElementById("rd_mercy_12_05").checked == true) { myObj.item[11].answer[0].valueInteger = 5; }
+
+            var jsonStr = JSON.stringify(myObj);
+            alert(jsonStr);
+
+            var apiURL;
+            apiURL = FHIRrootURL + '/' + "QuestionnaireResponse";
+            HTTPPostData(apiURL, jsonStr);
+
+
+        }
+
+
+    </script>
+
+</head>
+
+<body style="height: 780px">
+
+    FHIR patient id:
+    <input type="text" value="unknown" id="FHIRPtionID" /> <br />
+
+    <p>ADL 量表</p>
+
+    <input id="Button1" onclick="postData()" type="button" value="postData" /><br /> <br />
+
+    <table width="100%" style="table-layout: fixed" border="1">
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>1. 每當把重要的事搞砸的時候，會沉溺在什麼事都做不好的沮喪感中。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_01" id="rd_mercy_01_01" value="10"
+                                checked="checked" />完全不是(1)
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_01" id="rd_mercy_01_02" value="5" />很少(2)
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_01" id="rd_mercy_01_03" value="0" />偶爾(3)
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_01" id="rd_mercy_01_04" value="4" />經常(4)
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_01" id="rd_mercy_01_05" value="5" />幾乎總是(5)
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>2.不喜歡自己個性上的某些特質，但會嘗試用理解跟耐性的態度對待。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_02" id="rd_mercy_02_01" value="1"
+                                checked="checked" />完全不是(1)
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_02" id="rd_mercy_02_02" value="2" />很少(2)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_02" id="rd_mercy_02_03" value="3" />偶爾(3)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_02" id="rd_mercy_02_04" value="4" />經常(4)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_02" id="rd_mercy_02_05" value="5" />幾乎總是(5)
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>3.令人難過的事情發生的時候，會試著以平常心應對。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_03" id="rd_mercy_03_01" value="1"
+                                checked="checked" />完全不是(1)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_03" id="rd_mercy_03_02" value="2" />很少(2)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_03" id="rd_mercy_03_03" value="3" />偶爾(3)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_03" id="rd_mercy_03_04" value="4" />經常(4)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_03" id="rd_mercy_03_05" value="5" />幾乎總是(5)
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>4.情緒低落的時候，容易覺得其他人好像比較快樂。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_04" id="rd_mercy_04_01" value="1"
+                                checked="checked" />完全不是(1)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_04" id="rd_mercy_04_02" value="2" />很少(2)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_04" id="rd_mercy_04_03" value="3" />偶爾(3)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_04" id="rd_mercy_04_04" value="4" />經常(4)
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_04" id="rd_mercy_04_05" value="5" />幾乎總是(5)
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>5.會試圖把失敗視為一種正常的情況(每個人都會遇到)。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_05" id="rd_mercy_05_01" value="1"
+                                checked="checked" />(1)完全不是
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_05" id="rd_mercy_05_02" value="2" />(2)很少
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_05" id="rd_mercy_05_03" value="3" />(3)偶爾
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_05" id="rd_mercy_05_04" value="4" />(4)經常
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_05" id="rd_mercy_05_05" value="5" />(5)幾乎總是
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>6.熬過巨大難關時，會給予自己關懷跟包容。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_06" id="rd_mercy_06_01" value="1"
+                                checked="checked" />(1)完全不是
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_06" id="rd_mercy_06_02" value="2" />(2)很少
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_06" id="rd_mercy_06_03" value="3" />(3)偶爾
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_06" id="rd_mercy_06_04" value="4" />(4)經常
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_06" id="rd_mercy_06_05" value="5" />(5)幾乎總是
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>7.遇到不開心的事情時，試著保持心平氣和。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_07" id="rd_mercy_07_01" value="1"
+                                checked="checked" />(1)完全不是
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_07" id="rd_mercy_07_02" value="2" />(2)很少
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_07" id="rd_mercy_07_03" value="3" />(3)偶爾
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_07" id="rd_mercy_07_04" value="4" />(4)經常
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_07" id="rd_mercy_07_05" value="5" />(5)幾乎總是
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>8. 在重大事件上失敗的時候，會覺得陷在挫敗的漩窩裡，孤立無援。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_08" id="rd_mercy_08_01" value="1"
+                                checked="checked" />(1)完全不是
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_08" id="rd_mercy_08_02" value="2" />(2)很少
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_08" id="rd_mercy_08_03" value="3" />(3)偶爾
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_08" id="rd_mercy_08_04" value="4" />(4)經常
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_08" id="rd_mercy_08_05" value="5" />(5)幾乎總是
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>9.低潮的時候，對犯過的錯會更執著且放不下。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_09" id="rd_mercy_09_01" value="1"
+                                checked="checked" />(1)完全不是
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_09" id="rd_mercy_09_02" value="2" />(2)很少
+
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_09" id="rd_mercy_09_03" value="3" />(3)偶爾
+
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_09" id="rd_mercy_09_04" value="4" />(4)經常
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_09" id="rd_mercy_09_05" value="5" />(5)幾乎總是
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>10. 覺得自己有所不足時，會試圖提醒自己這種感覺是很多人都有過的。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_10" id="rd_mercy_10_01" value="1"
+                                checked="checked" />(1)完全不是
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_10" id="rd_mercy_10_02"
+                                value="2" />(2)很少
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_10" id="rd_mercy_10_03"
+                                value="3" />(3)偶爾
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_10" id="rd_mercy_10_04"
+                                value="4" />(4)經常
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_10" id="rd_mercy_10_05"
+                                value="5" />(5)幾乎總是
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>11. 對自身的缺點感到失望，對不足之處會加以批判。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_11" id="rd_mercy_11_01" value="1"
+                                checked="checked" />(1)完全不是
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_11" id="rd_mercy_11_02"
+                                value="2" />(2)很少
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_11" id="rd_mercy_11_03"
+                                value="3" />(3)偶爾
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_11" id="rd_mercy_11_04"
+                                value="4" />(4)經常
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_11" id="rd_mercy_11_05"
+                                value="5" />(5)幾乎總是
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>12.討厭自己個性的某些特質，會對此非常沒有耐性而且態度不甚寬容。</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_12" id="rd_mercy_12_01" value="1"
+                                checked="checked" />(1)完全不是
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_12" id="rd_mercy_12_02"
+                                value="2" />(2)很少
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_12" id="rd_mercy_12_03"
+                                value="3" />(3)偶爾
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_12" id="rd_mercy_12_04"
+                                value="4" />(4)經常
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_mercy_12" id="rd_mercy_12_05"
+                                value="5" />(5)幾乎總是
+
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</body>
+<script>
+    document.getElementById("FHIRPtionID").value = getCookie("patientID");
+    document.getElementById("name").value = getCookie("patientName");
+
+</script>
+
+</html>

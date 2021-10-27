@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+   
+  <script src="setting.js"></script>
+  <script src="Cookie.js"></script> 
+  <script src="HTTP2019.js"></script>
+ <script>
+
+
+   var myObj = {
+      "resourceType": "QuestionnaireResponse",
+      "status": "completed",
+      "subject": {
+        "reference": "Patient/1478659"
+      },
+      "authored": "2020-02-17T12:20:17.1151Z",
+      "item": [ {
+        "linkId": "1",
+        "text": "我在洗澡或淋浴時，我清楚知道水流過身體的感覺。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "2",
+        "text": "我善於用文字來描述我的感覺。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "3",
+        "text": "我無法專注於當下所做的事情，因為我常在做白日夢、擔憂或分心。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "4",
+        "text": "我的一些想法是不正常的或不好的，我認為自己不應該那樣想。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "5",
+        "text": "當我有痛苦的想法或想像時，我會”退一步”想這些想法，腦海裏不會被這個想法佔據。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "6",
+        "text": "我注意食物或飲料如何影響我的想法、身體感覺、情緒。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "7",
+        "text": "我很難想到正確的文字來表達我對事物的感覺。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "8",
+        "text": "我只是例行性的執行工作，對我正在做的事並什麼覺察。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "9",
+        "text": "我的一些情緒是不正常的或不好的，我認為自己不應該有這樣的感覺。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "10",
+        "text": "當我有痛苦的想法或想像時，我只是注意到它們，而沒有對這個想法或想像做出反應。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "11",
+        "text": "我會注意到自己的一些感官知覺，例如：微風吹過我的頭髮、陽光照在我臉上的感覺。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "12",
+        "text": "即使我感到非常沮喪，我也可以找到方法將其表達出來。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "13",
+        "text": "我發現自己做事不專心。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "14",
+        "text": "當有某些感覺時，我會告誡自己不應該有這樣的感覺。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      }, 
+      {
+        "linkId": "15",
+        "text": "當我有痛苦的想法或想像時，我只是注意到它們，而不會再繼續想它們。",
+        "answer": [ {
+          "valueInteger": 0
+        } ]
+      } ]
+    };
+
+   // alert(myObj.item[0].answer[0].valueInteger);
+	 
+   function postData() {
+   
+   myObj.subject.reference =   "Patient/"  +  document.getElementById("FHIRPtionID").value;
+
+  if(document.getElementById("rd_five_01_01").checked == true)
+     { myObj.item[0].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_01_02").checked == true)
+     { myObj.item[0].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_01_03").checked == true)
+     { myObj.item[0].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_01_04").checked == true)
+     { myObj.item[0].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_01_05").checked == true)
+     { myObj.item[0].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_02_01").checked == true)
+     { myObj.item[1].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_02_02").checked == true)
+     { myObj.item[1].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_02_03").checked == true)
+     { myObj.item[1].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_02_04").checked == true)
+     { myObj.item[1].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_02_05").checked == true)
+     { myObj.item[1].answer[0].valueInteger =5 ;            }   
+     
+  if(document.getElementById("rd_five_03_01").checked == true)
+     { myObj.item[2].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_03_02").checked == true)
+     { myObj.item[2].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_03_03").checked == true)
+     { myObj.item[2].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_03_04").checked == true)
+     { myObj.item[2].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_03_05").checked == true)
+     { myObj.item[2].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_04_01").checked == true)
+     { myObj.item[3].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_04_02").checked == true)
+     { myObj.item[3].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_04_03").checked == true)
+     { myObj.item[3].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_04_04").checked == true)
+     { myObj.item[3].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_04_05").checked == true)
+     { myObj.item[3].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_05_01").checked == true)
+     { myObj.item[4].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_05_02").checked == true)
+     { myObj.item[4].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_05_03").checked == true)
+     { myObj.item[4].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_05_04").checked == true)
+     { myObj.item[4].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_05_05").checked == true)
+     { myObj.item[4].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_06_01").checked == true)
+     { myObj.item[5].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_06_02").checked == true)
+     { myObj.item[5].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_06_03").checked == true)
+     { myObj.item[5].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_06_04").checked == true)
+     { myObj.item[5].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_06_05").checked == true)
+     { myObj.item[5].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_07_01").checked == true)
+     { myObj.item[6].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_07_02").checked == true)
+     { myObj.item[6].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_07_03").checked == true)
+     { myObj.item[6].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_07_04").checked == true)
+     { myObj.item[6].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_07_05").checked == true)
+     { myObj.item[6].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_08_01").checked == true)
+     { myObj.item[7].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_08_02").checked == true)
+     { myObj.item[7].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_08_03").checked == true)
+     { myObj.item[7].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_08_04").checked == true)
+     { myObj.item[7].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_08_05").checked == true)
+     { myObj.item[7].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_09_01").checked == true)
+     { myObj.item[8].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_09_02").checked == true)
+     { myObj.item[8].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_09_03").checked == true)
+     { myObj.item[8].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_09_04").checked == true)
+     { myObj.item[8].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_09_05").checked == true)
+     { myObj.item[8].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_10_01").checked == true)
+     { myObj.item[9].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_10_02").checked == true)
+     { myObj.item[9].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_10_03").checked == true)
+     { myObj.item[9].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_10_04").checked == true)
+     { myObj.item[9].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_10_05").checked == true)
+     { myObj.item[9].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_11_01").checked == true)
+     { myObj.item[10].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_11_02").checked == true)
+     { myObj.item[10].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_11_03").checked == true)
+     { myObj.item[10].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_11_04").checked == true)
+     { myObj.item[10].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_11_05").checked == true)
+     { myObj.item[10].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_12_01").checked == true)
+     { myObj.item[11].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_12_02").checked == true)
+     { myObj.item[11].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_12_03").checked == true)
+     { myObj.item[11].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_12_04").checked == true)
+     { myObj.item[11].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_12_05").checked == true)
+     { myObj.item[11].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_13_01").checked == true)
+     { myObj.item[12].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_13_02").checked == true)
+     { myObj.item[12].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_13_03").checked == true)
+     { myObj.item[12].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_13_04").checked == true)
+     { myObj.item[12].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_13_05").checked == true)
+     { myObj.item[12].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_14_01").checked == true)
+     { myObj.item[13].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_14_02").checked == true)
+     { myObj.item[13].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_14_03").checked == true)
+     { myObj.item[13].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_14_04").checked == true)
+     { myObj.item[13].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_14_05").checked == true)
+     { myObj.item[13].answer[0].valueInteger =5 ;            }
+
+  if(document.getElementById("rd_five_15_01").checked == true)
+     { myObj.item[14].answer[0].valueInteger =1;     }
+  if(document.getElementById("rd_five_15_02").checked == true)
+     { myObj.item[14].answer[0].valueInteger =2 ;      }  
+  if(document.getElementById("rd_five_15_03").checked == true)
+     { myObj.item[14].answer[0].valueInteger =3 ;            }
+  if(document.getElementById("rd_five_15_04").checked == true)
+     { myObj.item[14].answer[0].valueInteger =4 ;            }
+  if(document.getElementById("rd_five_15_05").checked == true)
+     { myObj.item[14].answer[0].valueInteger =5 ;            }
+
+    var jsonStr = JSON.stringify(myObj);
+    alert(jsonStr);
+
+    var apiURL;
+    apiURL = FHIRrootURL + '/' + "QuestionnaireResponse";
+    HTTPPostData(apiURL, jsonStr);  
+     
+
+	}
+
+
+</script>	
+	
+</head>
+<body style="height: 780px">
+    
+    FHIR patient id:
+    <input type="text"  value="unknown" id="FHIRPtionID"/>  <br/>
+
+    <p>正念五構面量表</p>
+   
+    <input id="Button1" onclick="postData()"  type="button" value="postData" /><br/>   <br/>
+
+     <table width="100%" style="table-layout: fixed" border="1">
+      <tr>
+          <td>
+              <div class="form-group">
+                  <label>1. 我在洗澡或淋浴時，我清楚知道水流過身體的感覺。</label>
+                  <div class="radio">
+                      <label>
+                          <input type="radio" name="rd_five_01" id="rd_five_01_01" value="1" checked="checked" />(1)一點也不符合                         
+                      </label>
+                  </div>
+                  <div class="radio">
+                      <label>
+                          <input type="radio" name="rd_five_01" id="rd_five_01_02" value="2" />(2) 較少符合
+                      </label>
+                  </div>
+                  <div class="radio">
+                      <label>
+                          <input type="radio" name="rd_five_01" id="rd_five_01_03" value="3" />(3) 有些同意                                   
+                      </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                        <input type="radio" name="rd_five_01" id="rd_five_01_04" value="4" />(4) 非常符合                                   
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                        <input type="radio" name="rd_five_01" id="rd_five_01_05" value="5" />(5) 完全符合                                  
+                    </label>
+                  </div>
+
+                </div>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <div class="form-group">
+                  <label>2. 我善於用文字來描述我的感覺。</label>
+                  <div class="radio">
+                    <label>
+                        <input type="radio" name="rd_five_02" id="rd_five_02_01" value="1" checked="checked" />(1)一點也不符合                         
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="rd_five_02" id="rd_five_02_02" value="2" />(2) 較少符合
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="rd_five_02" id="rd_five_02_03" value="3" />(3) 有些同意                                   
+                    </label>
+                </div>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_02" id="rd_five_02_04" value="4" />(4) 非常符合                                   
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_02" id="rd_five_02_05" value="5" />(5) 完全符合                                  
+                  </label>
+                </div>
+              </div>
+          </td>
+      </tr>
+      <tr>
+        <td>
+            <div class="form-group">
+                <label>3. 我無法專注於當下所做的事情，因為我常在做白日夢、擔憂或分心。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_03" id="rd_five_03_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_03" id="rd_five_03_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_03" id="rd_five_03_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_03" id="rd_five_03_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_03" id="rd_five_03_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>4. 我的一些想法是不正常的或不好的，我認為自己不應該那樣想。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_04" id="rd_five_04_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_04" id="rd_five_04_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_04" id="rd_five_04_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_04" id="rd_five_04_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_04" id="rd_five_04_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>5. 當我有痛苦的想法或想像時，我會”退一步”想這些想法，腦海裏不會被這個想法佔據。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_05" id="rd_five_05_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_05" id="rd_five_05_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_05" id="rd_five_05_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_05" id="rd_five_05_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_05" id="rd_five_05_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>6.我注意食物或飲料如何影響我的想法、身體感覺、情緒。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_06" id="rd_five_06_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_06" id="rd_five_06_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_06" id="rd_five_06_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_06" id="rd_five_06_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_06" id="rd_five_06_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>7. 我很難想到正確的文字來表達我對事物的感覺。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_07" id="rd_five_07_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_07" id="rd_five_07_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_07" id="rd_five_07_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_07" id="rd_five_07_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_07" id="rd_five_07_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>8. 我只是例行性的執行工作，對我正在做的事並什麼覺察。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_08" id="rd_five_08_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_08" id="rd_five_08_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_08" id="rd_five_08_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_08" id="rd_five_08_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_08" id="rd_five_08_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>9. 我的一些情緒是不正常的或不好的，我認為自己不應該有這樣的感覺。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_09" id="rd_five_09_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_09" id="rd_five_09_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_09" id="rd_five_09_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_09" id="rd_five_09_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_09" id="rd_five_09_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>10. 當我有痛苦的想法或想像時，我只是注意到它們，而沒有對這個想法或想像做出反應。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_10" id="rd_five_10_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_10" id="rd_five_10_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_10" id="rd_five_10_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_10" id="rd_five_10_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_10" id="rd_five_10_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>11. 我會注意到自己的一些感官知覺，例如：微風吹過我的頭髮、陽光照在我臉上的感覺。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_11" id="rd_five_11_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_11" id="rd_five_11_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_11" id="rd_five_11_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_11" id="rd_five_11_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_11" id="rd_five_11_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>12. 即使我感到非常沮喪，我也可以找到方法將其表達出來。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_12" id="rd_five_12_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_12" id="rd_five_12_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_12" id="rd_five_12_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_12" id="rd_five_12_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_12" id="rd_five_12_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>13. 我發現自己做事不專心。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_13" id="rd_five_13_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_13" id="rd_five_13_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_13" id="rd_five_13_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_13" id="rd_five_13_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_13" id="rd_five_13_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>14. 當有某些感覺時，我會告誡自己不應該有這樣的感覺。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_14" id="rd_five_14_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_14" id="rd_five_14_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_14" id="rd_five_14_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_14" id="rd_five_14_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_14" id="rd_five_14_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label>15. 當我有痛苦的想法或想像時，我只是注意到它們，而不會再繼續想它們。</label>
+                <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_15" id="rd_five_15_01" value="1" checked="checked" />(1)一點也不符合                         
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_15" id="rd_five_15_02" value="2" />(2) 較少符合
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="rd_five_15" id="rd_five_15_03" value="3" />(3) 有些同意                                   
+                  </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_15" id="rd_five_15_04" value="4" />(4) 非常符合                                   
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio" name="rd_five_15" id="rd_five_15_05" value="5" />(5) 完全符合                                  
+                </label>
+              </div>
+            </div>
+        </td>
+    </tr>
+      
+  </table>
+  
+</body>
+<script >
+    document.getElementById("FHIRPtionID").value = getCookie("patientID");
+    document.getElementById("name").value = getCookie("patientName");
+
+</script>
+</html>

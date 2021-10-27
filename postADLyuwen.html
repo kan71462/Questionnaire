@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <script src="setting.js"></script>
+    <script src="Cookie.js"></script>
+    <script src="HTTP2019.js"></script>
+    <script>
+
+
+        var myObj = {
+            "resourceType": "QuestionnaireResponse",
+            "status": "completed",
+            "subject": {
+                "reference": "Patient/1478659"
+            },
+            "authored": "2020-02-17T12:20:17.1151Z",
+            "item": [{
+                "linkId": "1",
+                "text": "我常需搬運病人或重物",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "2",
+                "text": "若家中有急事，我無法請假",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "3",
+                "text": "必須承受病人或家屬的負向情緒讓我很有壓力",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "4",
+                "text": "on call制度使我無法安排生活",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "5",
+                "text": "若須支援其他專科病房，我會很有壓力",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "6",
+                "text": "若未依規定升等(如N1、N2)，會影響我的收入或考績 ",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "7",
+                "text": "上班時我沒有完整的30分鐘用餐",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "8",
+                "text": "我若身體嚴重不適，無法請假",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "9",
+                "text": "我會因病人病情無法改善感到難過",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "10",
+                "text": "工作上的負荷，讓我難以完成在家想做的事",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "11",
+                "text": "太多非護理的工作剝奪我照護病人的時間",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "12",
+                "text": "我會因主要照顧者無法妥善照顧病人感到有壓力",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "13",
+                "text": "我會因為醫師的情緒性言語，感到很有壓力",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "14",
+                "text": "上班時，我沒時間喝水、上廁所",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "15",
+                "text": "我會擔心同事工作能力不足而影響到病人安全",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "16",
+                "text": "我會因為工作時遭遇心理暴力(如威脅、恐嚇、歧視、霸凌、騷擾等)，感到很有壓力",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "17",
+                "text": "上班時，我沒有足夠時間提供病人心理層次的護理",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "18",
+                "text": "醫院常以低於時薪的價格換取我的工時",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "19",
+                "text": "病人可能有感染性疾病時(如SARS，AIDS等)，我會很有壓力",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "20",
+                "text": "工作上的負荷，會影響我的家庭生活",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            },
+            {
+                "linkId": "21",
+                "text": "工作帶來的相關責任，使我必須改變家庭活動的安排 ",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }]
+        };
+
+        // alert(myObj.item[0].answer[0].valueInteger);
+
+        function postData() {
+
+            myObj.subject.reference = "Patient/" + document.getElementById("FHIRPtionID").value;
+
+            if (document.getElementById("rd_pressure_01_01").checked == true) { myObj.item[0].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_01_02").checked == true) { myObj.item[0].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_01_03").checked == true) { myObj.item[0].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_01_04").checked == true) { myObj.item[0].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_02_01").checked == true) { myObj.item[1].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_02_02").checked == true) { myObj.item[1].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_02_03").checked == true) { myObj.item[1].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_02_04").checked == true) { myObj.item[1].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_03_01").checked == true) { myObj.item[2].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_03_02").checked == true) { myObj.item[2].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_03_03").checked == true) { myObj.item[2].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_03_04").checked == true) { myObj.item[2].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_04_01").checked == true) { myObj.item[3].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_04_02").checked == true) { myObj.item[3].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_04_03").checked == true) { myObj.item[3].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_04_04").checked == true) { myObj.item[3].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_05_01").checked == true) { myObj.item[4].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_05_02").checked == true) { myObj.item[4].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_05_03").checked == true) { myObj.item[4].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_05_04").checked == true) { myObj.item[4].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_06_01").checked == true) { myObj.item[5].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_06_02").checked == true) { myObj.item[5].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_06_03").checked == true) { myObj.item[5].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_06_04").checked == true) { myObj.item[5].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_07_01").checked == true) { myObj.item[6].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_07_02").checked == true) { myObj.item[6].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_07_03").checked == true) { myObj.item[6].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_07_04").checked == true) { myObj.item[6].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_08_01").checked == true) { myObj.item[7].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_08_02").checked == true) { myObj.item[7].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_08_03").checked == true) { myObj.item[7].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_08_04").checked == true) { myObj.item[7].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_09_01").checked == true) { myObj.item[8].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_09_02").checked == true) { myObj.item[8].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_09_03").checked == true) { myObj.item[8].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_09_04").checked == true) { myObj.item[8].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_10_01").checked == true) { myObj.item[9].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_10_02").checked == true) { myObj.item[9].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_10_03").checked == true) { myObj.item[9].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_10_04").checked == true) { myObj.item[9].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_11_01").checked == true) { myObj.item[10].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_11_02").checked == true) { myObj.item[10].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_11_03").checked == true) { myObj.item[10].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_11_04").checked == true) { myObj.item[10].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_12_01").checked == true) { myObj.item[11].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_12_02").checked == true) { myObj.item[11].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_12_03").checked == true) { myObj.item[11].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_12_04").checked == true) { myObj.item[11].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_13_01").checked == true) { myObj.item[12].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_13_02").checked == true) { myObj.item[12].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_13_03").checked == true) { myObj.item[12].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_13_04").checked == true) { myObj.item[12].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_14_01").checked == true) { myObj.item[13].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_14_02").checked == true) { myObj.item[13].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_14_03").checked == true) { myObj.item[13].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_14_04").checked == true) { myObj.item[13].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_15_01").checked == true) { myObj.item[14].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_15_02").checked == true) { myObj.item[14].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_15_03").checked == true) { myObj.item[14].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_15_04").checked == true) { myObj.item[14].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_16_01").checked == true) { myObj.item[15].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_16_02").checked == true) { myObj.item[15].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_16_03").checked == true) { myObj.item[15].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_16_04").checked == true) { myObj.item[15].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_17_01").checked == true) { myObj.item[16].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_17_02").checked == true) { myObj.item[16].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_17_03").checked == true) { myObj.item[16].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_17_04").checked == true) { myObj.item[16].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_18_01").checked == true) { myObj.item[17].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_18_02").checked == true) { myObj.item[17].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_18_03").checked == true) { myObj.item[17].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_18_04").checked == true) { myObj.item[17].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_19_01").checked == true) { myObj.item[18].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_19_02").checked == true) { myObj.item[18].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_19_03").checked == true) { myObj.item[18].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_19_04").checked == true) { myObj.item[18].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_20_01").checked == true) { myObj.item[19].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_20_02").checked == true) { myObj.item[19].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_20_03").checked == true) { myObj.item[19].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_20_04").checked == true) { myObj.item[19].answer[0].valueInteger = 4; }
+
+            if (document.getElementById("rd_pressure_21_01").checked == true) { myObj.item[20].answer[0].valueInteger = 1; }
+            if (document.getElementById("rd_pressure_21_02").checked == true) { myObj.item[20].answer[0].valueInteger = 2; }
+            if (document.getElementById("rd_pressure_21_03").checked == true) { myObj.item[20].answer[0].valueInteger = 3; }
+            if (document.getElementById("rd_pressure_21_04").checked == true) { myObj.item[20].answer[0].valueInteger = 4; }
+            
+
+            
+
+
+            var jsonStr = JSON.stringify(myObj);
+            alert(jsonStr);
+
+            var apiURL;
+            apiURL = FHIRrootURL + '/' + "QuestionnaireResponse";
+            HTTPPostData(apiURL, jsonStr);
+
+
+        }
+
+
+    </script>
+
+</head>
+
+<body style="height: 780px">
+
+    FHIR patient id:
+    <input type="text" value="unknown" id="FHIRPtionID" /> <br />
+
+    <p>ADL 量表</p>
+
+    <input id="Button1" onclick="postData()" type="button" value="postData" /><br /> <br />
+
+    <table width="100%" style="table-layout: fixed" border="1">
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>1. 我常需搬運病人或重物</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_01" id="rd_pressure_01_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_01" id="rd_pressure_01_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_01" id="rd_pressure_01_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_01" id="rd_pressure_01_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>2. 若家中有急事，我無法請假</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_02" id="rd_pressure_02_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_02" id="rd_pressure_02_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_02" id="rd_pressure_02_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_02" id="rd_pressure_02_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>3. 必須承受病人或家屬的負向情緒讓我很有壓力</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_03" id="rd_pressure_03_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_03" id="rd_pressure_03_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_03" id="rd_pressure_03_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_03" id="rd_pressure_03_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>4. on call制度使我無法安排生活</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_04" id="rd_pressure_04_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_04" id="rd_pressure_04_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_04" id="rd_pressure_04_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_04" id="rd_pressure_04_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>5. 若須支援其他專科病房，我會很有壓力</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_05" id="rd_pressure_05_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_05" id="rd_pressure_05_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_05" id="rd_pressure_05_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_05" id="rd_pressure_05_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>6. 若未依規定升等(如N1、N2)，會影響我的收入或考績 </label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_06" id="rd_pressure_06_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_06" id="rd_pressure_06_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_06" id="rd_pressure_06_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_06" id="rd_pressure_06_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>7. 上班時我沒有完整的30分鐘用餐</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_07" id="rd_pressure_07_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_07" id="rd_pressure_07_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_07" id="rd_pressure_07_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_07" id="rd_pressure_07_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>8. 我若身體嚴重不適，無法請假</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_08" id="rd_pressure_08_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_08" id="rd_pressure_08_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_08" id="rd_pressure_08_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_08" id="rd_pressure_08_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>9. 我會因病人病情無法改善感到難過</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_09" id="rd_pressure_09_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_09" id="rd_pressure_09_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_09" id="rd_pressure_09_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_09" id="rd_pressure_09_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>10. 工作上的負荷，讓我難以完成在家想做的事</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_10" id="rd_pressure_10_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_10" id="rd_pressure_10_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_10" id="rd_pressure_10_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_10" id="rd_pressure_10_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>11. 太多非護理的工作剝奪我照護病人的時間</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_11" id="rd_pressure_11_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_11" id="rd_pressure_11_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_11" id="rd_pressure_11_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_11" id="rd_pressure_11_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>12. 我會因主要照顧者無法妥善照顧病人感到有壓力</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_12" id="rd_pressure_12_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_12" id="rd_pressure_12_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_12" id="rd_pressure_12_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_12" id="rd_pressure_12_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>13. 我會因為醫師的情緒性言語，感到很有壓力</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_13" id="rd_pressure_13_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_13" id="rd_pressure_13_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_13" id="rd_pressure_13_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_13" id="rd_pressure_13_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>14. 上班時，我沒時間喝水、上廁所</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_14" id="rd_pressure_14_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_14" id="rd_pressure_14_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_14" id="rd_pressure_14_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_14" id="rd_pressure_14_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>15. 我會擔心同事工作能力不足而影響到病人安全</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_15" id="rd_pressure_15_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_15" id="rd_pressure_15_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_15" id="rd_pressure_15_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_15" id="rd_pressure_15_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>16. 我會因為工作時遭遇心理暴力(如威脅、恐嚇、歧視、霸凌、騷擾等)，感到很有壓力</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_16" id="rd_pressure_16_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_16" id="rd_pressure_16_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_16" id="rd_pressure_16_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_16" id="rd_pressure_16_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>17. 上班時，我沒有足夠時間提供病人心理層次的護理</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_17" id="rd_pressure_17_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_17" id="rd_pressure_17_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_17" id="rd_pressure_17_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_17" id="rd_pressure_17_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>18. 醫院常以低於時薪的價格換取我的工時</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_18" id="rd_pressure_18_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_18" id="rd_pressure_18_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_18" id="rd_pressure_18_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_18" id="rd_pressure_18_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>19. 病人可能有感染性疾病時(如SARS，AIDS等)，我會很有壓力</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_19" id="rd_pressure_19_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_19" id="rd_pressure_19_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_19" id="rd_pressure_19_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_19" id="rd_pressure_19_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>20. 工作上的負荷，會影響我的家庭生活</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_20" id="rd_pressure_20_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_20" id="rd_pressure_20_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_20" id="rd_pressure_20_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_20" id="rd_pressure_20_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>21. 工作帶來的相關責任，使我必須改變家庭活動的安排 </label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_21" id="rd_pressure_21_01" value="1" checked="checked" />(1) 很不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_21" id="rd_pressure_21_02" value="2" />(2) 不同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_21" id="rd_pressure_21_03" value="3" />(3) 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_pressure_21" id="rd_pressure_21_04" value="4" />(4) 很同意
+                        </label>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+
+
+
+    </table>
+
+</body>
+<script>
+    document.getElementById("FHIRPtionID").value = getCookie("patientID");
+    document.getElementById("name").value = getCookie("patientName");
+
+</script>
+
+</html>
