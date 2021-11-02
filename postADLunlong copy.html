@@ -16,66 +16,64 @@
         var myObj = {
             "resourceType": "QuestionnaireResponse",
             "status": "completed",
-            "identifier": [
-        {
-          "system": "slot",
-          "value": "slot1"
-        }],
+            "identifier":{
+                //slot 1 
+            },
             "subject": {
                 "reference": "Patient/" + FHIRPtionID
             },
             "authored": "2020-02-17T12:20:17.1151Z",
             "item": [{
-                    "linkId": "marriage",
-                    "text": "婚姻狀況",
+                    "linkId": "991",
+                    "text": "div_marriage",
                     "answer": [{
                         "valueInteger": 0
                     }]
                 }, {
-                    "linkId": "religion",
-                    "text": "宗教信仰",
+                    "linkId": "992",
+                    "text": "div_religion",
                     "answer": [{
                         "valueInteger": 0
                     }]
                 }, {
-                    "linkId": "education",
-                    "text": "最高學歷",
+                    "linkId": "993",
+                    "text": "education",
                     "answer": [{
                         "valueInteger": 0
                     }]
                 }, {
-                    "linkId": "work",
-                    "text": "工作執業別",
+                    "linkId": "994",
+                    "text": "work",
                     "answer": [{
                         "valueInteger": 0
                     }]
                 }, {
-                    "linkId": "dep",
-                    "text": "工作科別",
+                    "linkId": "995",
+                    "text": "dep",
                     "answer": [{
                         "valueInteger": 0
                     }]
                 }, {
-                    "linkId": "teach",
-                    "text": "臨床教師",
+                    "linkId": "996",
+                    "text": "teach",
                     "answer": [{
                         "valueInteger": 0
                     }]
                 }, {
-                    "linkId": "money",
-                    "text": "經濟狀況",
+                    "linkId": "997",
+                    "text": "money",
                     "answer": [{
                         "valueInteger": 0
                     }]
                 }, {
-                    "linkId": "work3",
-                    "text": "工作必需輪三班",
+                    "linkId": "998",
+                    "text": "work3",
                     "answer": [{
                         "valueInteger": 0
                     }]
                 }, {
-                    "linkId": "study_1",
-                    "text": "有在職進修中",
+                    "linkId": "999",
+                    "text": "study_1",
                     "answer": [{
                         "valueInteger": 0
                     }]
@@ -628,19 +626,19 @@
                         "valueString": ""
                     }]
                 }, {
-                    "linkId": "total_year",
+                    "linkId": "98",
                     "text": "工作年資",
                     "answer": [{
                         "valueString": ""
                     }]
                 }, {
-                    "linkId": "start_year",
+                    "linkId": "99",
                     "text": "開始年",
                     "answer": [{
                         "valueString": ""
                     }]
                 }, {
-                    "linkId": "start_month",
+                    "linkId": "100",
                     "text": "開始月",
                     "answer": [{
                         "valueString": ""
@@ -708,17 +706,10 @@
                 if(myObj.item[i].hasOwnProperty("answer"))
                 if(myObj.item[i].answer[0].hasOwnProperty("valueInteger")){
                     if(myObj.item[i].answer[0].valueInteger==-1)
-                    
-                    if(Isblank=="")
-                        Isblank="div_"+myObj.item[i].linkId;
-                    
-                    //讓所有未選擇的radio 以紅框註記 。 因為FHIR模版LinkID未與div對應完成，所以一開始執行會有找不到物件的錯誤
-                    document.getElementById("div_"+myObj.item[i].linkId).style.border="2px red solid";
-       
-                    //break;
+                    Isblank=myObj.item[i].text;
+                    break;
                 }
             }
-            
             if(Isblank=="")
             {
             const DTevent = new Date();
@@ -734,7 +725,7 @@
             else
             { 
             window.location.hash = "#"+Isblank;
-       // document.getElementById(Isblank).style.border="2px red solid";
+            document.getElementById(Isblank).style.border="2px red solid";
             }
         }
 
@@ -801,9 +792,8 @@
     1. 生日 (E.g. 1900-01-01)：
     <input type="text" id="DoB" value=" "/>
     <br>
-
-    <div id="div_gender">
     2. 性別：
+    <div id="div_gender"></div>
     <input type="text" id="txt_gender" readonly="readonly" value=" "/>
     <select type="text" id="selGender" onchange="getSelectValue('selGender')">
         <option>請選擇您的性別</option>
@@ -811,7 +801,7 @@
         <option>female</option>
         <option>other</option>
         <option>unknown</option>
-    </select></div>
+    </select>
     <br>
      <div id="div_marriage">
     3. 婚姻狀況:
@@ -835,7 +825,6 @@
     <input type="radio" name="religion" id="religion_6" value="6">6.回教
     <input type="radio" name="religion" id="religion_7" value="7">7.其他 <br />
     </div>
-    <div id="div_education">
     5.最高學歷：
     <input type="radio" name="education" id="education_0" value="-1" hidden checked>
     <input type="radio" name="education" id="education_1" value="1">1.專科
@@ -844,10 +833,8 @@
     <input type="radio" name="education" id="education_4" value="4">4.大學
     <input type="radio" name="education" id="education_5" value="5">5.碩士
     <input type="radio" name="education" id="education_6" value="6">6.博士 <br />
-</div>
-
-<div id="div_work">
     6. 工作執業別:
+
     <input type="radio" name="work" id="work_0" value="-1" hidden checked>
     <input type="radio" name="work" id="work_1" value="1">1.護理師
     <input type="radio" name="work" id="work_2" value="2">2.藥劑師
@@ -860,10 +847,7 @@
     <input type="radio" name="work" id="work_9" value="9">9.心理師
     <input type="radio" name="work" id="work_10" value="10">10.醫師
     <input type="radio" name="work" id="work_11" value="11">11.其他 <br />
-</div>
     <p>執業別有分科者請續答第7題，無分科者請續答第8題</p>
-
-    <div id="div_dep">
     7.工作科別：
 
     <input type="radio" name="dep" id="dep_0" value="-1" hidden checked>
@@ -879,37 +863,30 @@
     <input type="radio" name="dep" id="dep_10" value="10">10.門診
     <input type="radio" name="dep" id="dep_11" value="11">11.安寧
     <input type="radio" name="dep" id="dep_12" value="12">12.其他 <br />
-    </div>
-   
     8. 工作年資：
     <input type="text" id="total_year" value=" "/>年，
     民國<input type="text" id="start_year" value=" "/>年
     <input type="text" id="start_month" value=" "/>月至慈濟醫院工作 <br />
-    
-    <div id="div_teach">
     9. 臨床教師:
+
     <input type="radio" name="teach" id="teach_0" value="-1" hidden checked>
     <input type="radio" name="teach" id="teach_1" value="1">1. 否
     <input type="radio" name="teach" id="teach_2" value="2">2.是，臨床教師年資：
     <input type="text" id="teach_year" value=" "/>年<br />
-    </div>
-    <div id="div_money">
     10經濟狀況：
+
     <input type="radio" name="money" id="money_0" value="-1" hidden checked>
     <input type="radio" name="money" id="money_1" value="1">1.入不敷出
     <input type="radio" name="money" id="money_2" value="2">2.收支平衡
     <input type="radio" name="money" id="money_3" value="3">3.尚有結餘
     <input type="radio" name="money" id="money_4" value="4">4. 其他<br />
-</div>
-<div id="div_work3">
     11.工作必需輪三班：
+
     <input type="radio" name="work3" id="work3_0" value="-1" hidden checked>
     <input type="radio" name="work3" id="work3_1" value="1">1.是，最近一週，大夜班天數
     <input type="text" id="work3_big_day" value=" "/>天，小夜班
     <input type="text" id="work3_small_day" value=" "/>天
     <input type="radio" name="work3" id="work3_2" value="2">2.否<br />
-</div>
-<div id="div_study_1">
     12.有在職進修中：
     1.是，
 
@@ -918,7 +895,7 @@
     <input type="radio" name="study_1" id="study_1_2" value="2">碩士
     <input type="radio" name="study_1" id="study_1_3" value="3">博士
     <input type="radio" name="study_1" id="study_2" value="4">2.否<br />
-</div>
+
     <h1 align="center">研究問卷</h1>
     <p>親愛的護理同仁，您好
         為了解您目前所面臨的處境，作為未來我們辦理正念相關課程之參考。期望您能夠提供您寶貴的經驗，幫助工作之調適。
